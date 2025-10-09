@@ -41,13 +41,13 @@ function Episodes() {
     return (
         <Container className="py-5">
             <div className="text-center mb-5">
-                <h1>Episodes</h1>
-                <p>Discover conversations exploring leadership, color, and change.</p>
+                <h1 className="fw-bold">Episodes</h1>
+                <p className="text-muted">Discover conversations exploring leadership, color, and change.</p>
             </div>
 
-            <Form>
-                <Row>
-                    <Col>
+            <Form className="mb-4">
+                <Row className="justify-content-center">
+                    <Col md={6}>
                     <Form.Control
                     type="text"
                     placeholder="Search by guest or topic..."
@@ -61,12 +61,12 @@ function Episodes() {
             <Row>
                 {filteredEpisodes.length > 0 ? (
                     filteredEpisodes.map((episode) => (
-                        <Col>
-                        <Card>
-                        <Card.Img />
+                        <Col md={4} sm={6} key={episode.id} className="mb-4">
+                        <Card className="h-100 shadow-sm">
+                        <Card.Img variant="top" src={episode.image} alt={episode.title}/>
                         <Card.Body>
                             <Card.Title>{episode.title}</Card.Title>
-                            <Card.Subtitle>{episode.guest}</Card.Subtitle>
+                            <Card.Subtitle className="mb-2 text-muted">{episode.guest}</Card.Subtitle>
                             <Card.Text>{episode.teaser}</Card.Text>
                             <Button 
                             variant="primary"
@@ -81,7 +81,7 @@ function Episodes() {
                         </Col>
                     ))
                 ) : (
-                    <p>No episodes found</p>
+                    <p className="text-center text-muted">No episodes found</p>
                 )}
             </Row>
         </Container>
