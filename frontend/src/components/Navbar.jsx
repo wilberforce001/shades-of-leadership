@@ -21,6 +21,7 @@ function NavigationBar() {
           <Nav className="ms-auto">
             <Nav.Link as={Link} to="/">Home</Nav.Link>
             <Nav.Link href='/episodes'>Episodes</Nav.Link>
+            <Nav.Link href='/about'>About</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
