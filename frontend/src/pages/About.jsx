@@ -3,25 +3,28 @@ import profileImage from '../assets/Divakar.jpg';
 
 function About() {
     return (
-        <section>
+        <section className="py-5">
             <Container>
-                <div>
-                    <h1>About the Show</h1>
-                    <p>Exploring leadership, color, and identity through powerful conversations.</p>
+                {/* Page Header */}
+                <div className="text-center mb-5">
+                    <h1 className="fw-bold">About the Show</h1>
+                    <p className="text-muted">Exploring leadership, color, and identity through powerful conversations.</p>
                 </div>
 
-                <Row>
-                    <Col>
+                {/* Story Section */}
+                <Row className="align-items-center mb-5">
+                    <Col md={6}>
                         <Image 
-                            src="https://images.unsplash.com/photo-1581091012184-5c8af0c6e3b1?auto=format&fit=crop&w=800&q=80"
+                            src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80"
                             alt="Microphone and podcast setup"
                             fluid
                             rounded
+                            className="shadow-sm"
                         />
                     </Col>
 
-                    <Col>
-                        <h3>The Story Behind "Shades"</h3>
+                    <Col md={6}>
+                        <h3 className="fw-semibold mb-3">The Story Behind "Shades"</h3>
                         <p>
                             <strong>Shades of Leadership</strong> was born from the vision of 
                             <a
@@ -43,8 +46,9 @@ function About() {
                     </Col>
                 </Row>
 
-                <Row>
-                    <Col>
+                {/* Why "Shades" */}
+                <Row className="align-items-center mb-5 flex-md-row-reverse">
+                    <Col md={6}>
                     <Image 
                     src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80"
                     alt="Color palette concept"
@@ -54,8 +58,8 @@ function About() {
                     />
                     </Col>
 
-                    <Col>
-                    <h3>Why "Shades"?</h3>
+                    <Col md={6}>
+                    <h3 className="fw-semibold mb-3">Why "Shades"?</h3>
                     <p>
                         "Shades" represents the idea that leadership isn't black and white. Each leader
                         brings a unique hue - a distinct perspective shaped by experience, empathy, and emotion. 
@@ -65,9 +69,10 @@ function About() {
                     </Col>
                 </Row>
 
-                <Row>
-                    <Col>
-                    <div>
+                {/* Host Section */}
+                <Row className="align-items-center text-center text-md-start">
+                    <Col md={4}>
+                    <div className="mx-auto mb-3" style={{ maxWidth: "200px"}}>
                         <Image 
                         src={profileImage}
                         alt="Sanjay Divakar"
@@ -78,9 +83,9 @@ function About() {
                     </div>
                     </Col>
 
-                    <Col>
-                    <h3>Hosted by <span>Sanjay Divakar</span></h3>
-                    <p>Leadership coach and founder of {" "} 
+                    <Col md={8}>
+                    <h3 className="fw-semibold">Hosted by <span className="text-primary">Sanjay Divakar</span></h3>
+                    <p className="lead">Leadership coach and founder of {" "} 
                         <a 
                         href="https://rolecolorfinder.com"
                         target="_blank"
@@ -97,9 +102,9 @@ function About() {
                 </Row>
 
                 {/* Vision Statement */}
-                <Row>
-                    <Col>
-                    <blockquote>
+                <Row className="mt-5">
+                    <Col className="text-center">
+                    <blockquote className="blockquote fw-bold fs-5 text-secondary">
                         "We're building the world's most color-aware leadership conversation."
                     </blockquote>
                     </Col>

@@ -100,3 +100,12 @@ h1, h2, h3 {
   height: 20px;
 }
 
+blockquote {
+  border-left: 4px solid #0d6efd;
+  padding-left: 1rem;
+  font-style: italic;
+}
+
+section {
+  overflow-x: hidden;
+}
