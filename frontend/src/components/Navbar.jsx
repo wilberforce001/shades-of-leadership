@@ -3,7 +3,7 @@ import { Navbar, Nav, Container } from 'react-bootstrap';
 
 function NavigationBar() {
   return (
-    <Navbar>
+    <Navbar bg='dark' variant='dark' expand='lg'>
       <Container>
         <Navbar.Brand as={Link} to="/">Shades of Leadership</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" /> 
