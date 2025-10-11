@@ -7,6 +7,7 @@ import About from './pages/About';
 import Guests from './pages/Guests';
 import GuestApplication from './pages/GuestApplication';
 import Resources from './pages/Resources';
+import Contact from './pages/Contact';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route path='/guests' element={<Guests />}/>
         <Route path='/apply' element={<GuestApplication />}/>
         <Route path='/resources' element={<Resources />}/>
+        <Route path='/contact' element={<Contact />}/>
       </Routes>
       <Footer />
     </Router>
