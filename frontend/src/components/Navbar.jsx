@@ -23,6 +23,7 @@ function NavigationBar() {
             <Nav.Link href='/episodes'>Episodes</Nav.Link>
             <Nav.Link href='/about'>About</Nav.Link>
             <Nav.Link href='/guests'>Guests</Nav.Link>
+            <Nav.Link as={Link} to='/apply'>Be a Guest</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
