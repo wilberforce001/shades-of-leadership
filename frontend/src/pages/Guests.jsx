@@ -22,23 +22,23 @@ function Guests() {
         },
     ]
     return (
-        <div>
-            <h2>Meet our Guests</h2>
-            <div>
+        <div className="container mt-5">
+            <h2 className="text-center mb-4">Meet our Guests</h2>
+            <div className="row">
                 {guests.map((guest, index) => (
-                    <div>
-                        <div>
+                    <div key={index} className="col-md-4 mb-4">
+                        <div className="card h-100 shadow-sm border-1">
                             <img 
                             src={guest.img}
                             alt={guest.name}
                             className="card-img-top"
-                            style={{ height: "250px", width: "250px", objectFit: "cover" }}
+                            style={{ height: "250px", objectFit: "cover" }}
                             />
 
-                            <div>
-                                <h5>{guest.name}</h5>
-                                <h6>{guest.role}</h6>
-                                <p>{guest.bio}</p>
+                            <div className="card-body">
+                                <h5 className="card-title">{guest.name}</h5>
+                                <h6 className="text-muted">{guest.role}</h6>
+                                <p className="card-text">{guest.bio}</p>
                             </div>
                         </div>
                     </div>
