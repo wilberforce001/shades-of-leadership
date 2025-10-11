@@ -1,51 +1,103 @@
 import React from "react";
+import { Container, Row, Col, Button } from "react-bootstrap";
 
 function Guests() {
-    const guests = [
-        {
-            name: "Sanjay Divakar",
-            role: "Entrepreneur & Leadership Coach",
-            img: "https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=800&q=80",
-            bio: "Sanjay shares insights on leadership, growth, and creating impactful organizations."
-        },
-        {
-            name: "Aisha Mwangi",
-            role: "Tech Innovator",
-            img: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=800&q=80",
-            bio: "Aisha explores how technology and innovation are shaping Africa’s future."
-        },
-        {
-            name: "David Kimani",
-            role: "Creative Director",
-            img: "https://images.unsplash.com/photo-1502767089025-6572583495b0?auto=format&fit=crop&w=800&q=80",
-            bio: "David discusses storytelling, creativity, and design as forces of change."
-        },
-    ]
-    return (
-        <div className="container mt-5">
-            <h2 className="text-center mb-4">Meet our Guests</h2>
-            <div className="row">
-                {guests.map((guest, index) => (
-                    <div key={index} className="col-md-4 mb-4">
-                        <div className="card h-100 shadow-sm border-1">
-                            <img 
-                            src={guest.img}
-                            alt={guest.name}
-                            className="card-img-top"
-                            style={{ height: "250px", objectFit: "cover" }}
-                            />
+  const guests = [
+    {
+      name: "Sanjay Divakar",
+      roleColor: "Gold – Visionary Leader",
+      title: "Founder, RoleColorFinder",
+      img: "https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=800&q=80",
+      episodeLink: "https://open.spotify.com/episode/example1",
+    },
+    {
+      name: "Aisha Mwangi",
+      roleColor: "Blue – Empathetic Innovator",
+      title: "Tech Innovator, Nairobi",
+      img: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=800&q=80",
+      episodeLink: "https://open.spotify.com/episode/example2",
+    },
+    {
+      name: "David Kimani",
+      roleColor: "Red – Creative Strategist",
+      title: "Creative Director, D&K Studio",
+      img: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=800&q=80",
+      episodeLink: "https://open.spotify.com/episode/example3",
+    },
+  ];
 
-                            <div className="card-body">
-                                <h5 className="card-title">{guest.name}</h5>
-                                <h6 className="text-muted">{guest.role}</h6>
-                                <p className="card-text">{guest.bio}</p>
-                            </div>
-                        </div>
-                    </div>
-                ))}
+  const logos = [
+    "https://upload.wikimedia.org/wikipedia/en/thumb/0/05/Harvard_shield_wreath.svg/1200px-Harvard_shield_wreath.svg.png",
+    "https://upload.wikimedia.org/wikipedia/en/thumb/9/94/University_of_Southern_California_seal.svg/1200px-University_of_Southern_California_seal.svg.png",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Teach_For_All_logo.svg/2560px-Teach_For_All_logo.svg.png",
+  ];
+
+  return (
+    <Container className="my-5">
+      {/* Header */}
+      <div className="text-center mb-5">
+        <h2 className="fw-bold">Our Guests</h2>
+        <p className="text-muted">Thought leaders and changemakers from around the world</p>
+      </div>
+
+      {/* Guest Cards */}
+      <Row>
+        {guests.map((guest, index) => (
+          <Col md={4} key={index} className="mb-4">
+            <div className="card border-0 shadow-sm h-100">
+              <img
+                src={guest.img}
+                alt={guest.name}
+                className="card-img-top"
+                style={{ height: "280px", objectFit: "cover" }}
+              />
+              <div className="card-body text-center">
+                <h5 className="card-title fw-bold">{guest.name}</h5>
+                <p className="text-primary fw-semibold">{guest.roleColor}</p>
+                <p className="text-muted">{guest.title}</p>
+                <Button
+                  variant="outline-dark"
+                  href={guest.episodeLink}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Listen to Episode
+                </Button>
+              </div>
             </div>
+          </Col>
+        ))}
+      </Row>
+
+      {/* Call to Action */}
+      <div className="text-center my-5">
+        <h4 className="fw-bold mb-3">Want to be a guest on the show?</h4>
+        <Button
+          variant="primary"
+          size="lg"
+          href="/guest-application"
+          className="px-4"
+        >
+          Apply to Be a Guest
+        </Button>
+      </div>
+
+      {/* Featured Logos */}
+      <div className="text-center mt-5">
+        <h5 className="fw-bold mb-4">As featured in</h5>
+        <div className="d-flex justify-content-center flex-wrap gap-4">
+          {logos.map((logo, i) => (
+            <img
+              key={i}
+              src={logo}
+              alt="Organization Logo"
+              style={{ height: "60px", objectFit: "contain" }}
+            />
+          ))}
         </div>
-    );
+      </div>
+    </Container>
+  );
 }
 
 export default Guests;
