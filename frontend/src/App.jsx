@@ -4,6 +4,7 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import Episodes from './pages/Episodes'
 import About from './pages/About';
+import Guests from './pages/Guests';
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path='/episodes' element={<Episodes />}/>
         <Route path='/about' element={<About />}/>
+        <Route path='/guests' element={<Guests />}/>
       </Routes>
       <Footer />
     </Router>
