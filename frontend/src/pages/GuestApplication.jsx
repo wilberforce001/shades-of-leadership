@@ -4,13 +4,13 @@ import { Container, Row, Col, Card, Form, Button } from "react-bootstrap";
 
 function GuestApplication() {
     return (
-        <div>
+        <div className="py-5 bg-light">
             <Container>
                 {/* Intro Section */}
-                <Row>
+                <Row className="justify-content-center text-center mb-5">
                     <Col md={8}>
-                    <h2>Join the Show</h2>
-                    <p>
+                    <h2 className="fw-bold mb-3">Join the Show</h2>
+                    <p className="lead">
                         We're always looking for educators, leaders, and change-makers who bring 
                         fresh perspectives to leadership, culture, and identity. If you have a story worth
                         sharing, we'd love to hear from you.
@@ -19,38 +19,38 @@ function GuestApplication() {
                 </Row>
 
                 {/* Application Form */}
-                <Row>
-                    <Col>
-                    <Card>
-                        <h4>Guest Application Form</h4>
+                <Row className="justify-content-center">
+                    <Col md={8}>
+                    <Card className="shadow-sm border-0 p-4">
+                        <h4 className="mb-3 text-center text-primary">Guest Application Form</h4>
                         <Form>
                             <Row>
-                                <Col>
-                                <Form.Group>
+                                <Col md={6}>
+                                <Form.Group className="mb-3" controlId="formName">
                                     <Form.Label>Full Name</Form.Label>
                                     <Form.Control type="text" placeholder="Enter your name" required/>
                                 </Form.Group>
                                 </Col>
 
-                                <Col>
-                                <Form.Group>
+                                <Col md={6}>
+                                <Form.Group className="mb-3" controlId="formRole">
                                     <Form.Label>Role / Title</Form.Label>
                                     <Form.Control type="text" placeholder="e.g Leadership Coach" required />
                                 </Form.Group>
                                 </Col>
                             </Row>
 
-                            <Form.Group>
+                            <Form.Group className="mb-3" controlId="formOrg">
                                 <Form.Label>Organization</Form.Label>
                                 <Form.Control type="text" placeholder="Your organization or company"/>
                             </Form.Group>
 
-                            <Form.Group>
+                            <Form.Group className="mb-3" controlId="formAssessment">
                                 <Form.Label>RoleColorFinder Assessment Link</Form.Label>
                                 <Form.Control type="url" placeholder="Paste your RoleColorFinder link"></Form.Control>
                             </Form.Group>
 
-                            <Form.Group>
+                            <Form.Group className="mb-3" controlId="formTopic">
                                 <Form.Label>Topic Focus</Form.Label>
                                 <Form.Control 
                                 as="textarea"
@@ -59,13 +59,13 @@ function GuestApplication() {
                                 />
                             </Form.Group>
 
-                            <Form.Group>
+                            <Form.Group className="mb-4" controlId="formAvailability">
                                 <Form.Label>Availability</Form.Label>
                                 <Form.Control type="text" placeholder="e.g weekdays after 3pm"/>
                             </Form.Group>
 
-                            <div>
-                                <Button>
+                            <div className="text-center">
+                                <Button variant="primary" type="submit">
                                     Submit Application
                                 </Button>
                             </div>
@@ -74,13 +74,13 @@ function GuestApplication() {
                     </Col>
                 </Row>
 
-                Testimoninal Section
-                <Row>
-                    <Col>
-                    <blockquote>
-                        <p>"The best conversation I've had on leadership - reflective, colorful, and deeply human."</p>
-                        <footer>
-                            <cite>Former Guest, Shades of Leadership</cite>
+                {/* Testimoninal Section */}
+                <Row className="justify-content-center text-center mt-5">
+                    <Col md={8}>
+                    <blockquote className="blockquote">
+                        <p className="mb-3 fst-italic">"The best conversation I've had on leadership - reflective, colorful, and deeply human."</p>
+                        <footer className="blockquote-footer">
+                            <cite title="Source Title">Former Guest, Shades of Leadership</cite>
                         </footer>
                     </blockquote>
                     </Col>
