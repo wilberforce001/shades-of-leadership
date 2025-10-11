@@ -6,6 +6,7 @@ import Episodes from './pages/Episodes'
 import About from './pages/About';
 import Guests from './pages/Guests';
 import GuestApplication from './pages/GuestApplication';
+import Resources from './pages/Resources';
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Route path='/about' element={<About />}/>
         <Route path='/guests' element={<Guests />}/>
         <Route path='/apply' element={<GuestApplication />}/>
+        <Route path='/resources' element={<Resources />}/>
       </Routes>
       <Footer />
     </Router>
