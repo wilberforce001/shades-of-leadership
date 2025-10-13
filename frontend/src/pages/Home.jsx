@@ -13,8 +13,8 @@ function Home() {
           <Container fluid>
             <h1 className="display-4 fw-bold mb-3" style={{ color: "#FFDD33" }}>Shades of Leadership</h1>
             <p className="lead mb-4" style={{ color: "#CBD5E1" }}>Where Leadership Meets Color and Character</p>
-            <div>
-              <Button variant="warning" className="me-3"
+            <div className="d-flex flex-column flex-md-row justify-content-center align-items gap-3">
+              <Button variant="warning" className="mb-2 mb-md-0"
               style={{ 
                 backgroundColor: "#FFDD33",
                 borderColor: "#FFDD33",
@@ -34,8 +34,7 @@ function Home() {
                 padding: "0.75rem 1.5rem",
                 borderRadius: "8px",
               }}
-              >Apply to Be a Guest
-              </Button>
+              >Apply to Be a Guest</Button>
             </div>
           </Container>
         </section>
