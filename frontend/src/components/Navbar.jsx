@@ -11,9 +11,9 @@ function NavigationBar() {
         fontFamily: "'Poppins', sans-serif",
       }}
     >
-      <Container className="d-flex align-items-center justify-content-between">
-        {/* Brand + toggle grouped in one flex row */}
-        <div className="d-flex align-items-center w-100 justify-content-between">
+      <Container className="d-flex flex-column flex-lg-row align-items-lg-center justify-content-between">
+        {/* Brand + toggle on one line */}
+        <div className="d-flex align-items-center justify-content-between w-100">
           <Navbar.Brand
             href="/"
             className="fw-bold fs-4 d-flex align-items-center mb-0"
@@ -32,10 +32,10 @@ function NavigationBar() {
             <span>Shades of Leadership</span>
           </Navbar.Brand>
 
-          {/* Toggle button inline with logo */}
+          {/* Toggle button inline with brand and INSIDE container padding */}
           <Navbar.Toggle
             aria-controls="basic-navbar-nav"
-            className="border-0"
+            className="border-0 ms-3"
             style={{
               backgroundColor: "#FFDD33",
               height: "40px",
@@ -44,7 +44,7 @@ function NavigationBar() {
           />
         </div>
 
-        {/* Collapsible Nav links */}
+        {/* Collapsible links */}
         <Navbar.Collapse
           id="basic-navbar-nav"
           className="justify-content-lg-end mt-2 mt-lg-0"
