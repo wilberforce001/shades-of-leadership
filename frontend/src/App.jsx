@@ -8,6 +8,7 @@ import Guests from './pages/Guests';
 import GuestApplication from './pages/GuestApplication';
 import Resources from './pages/Resources';
 import Contact from './pages/Contact';
+import './App.css'
 
 
 function App() {
