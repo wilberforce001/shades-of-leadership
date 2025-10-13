@@ -9,9 +9,10 @@ function NavigationBar() {
       style={{
         backgroundColor: "#242E42",
         fontFamily: "'Poppins', sans-serif",
+        borderRadius: "15px"
       }}
     >
-      <Container>
+      <Container fluid="sm" className="px-4">
         {/* Brand section */}
         <Navbar.Brand
           href="/"

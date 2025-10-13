@@ -10,7 +10,7 @@ function Home() {
         <section className="text-center py-5"
         style={{ background: "1E293B", color: "#F8FAFC",}}
         >
-          <Container fluid>
+          <Container fluid="sm" className="px-4">
             <h1 className="display-4 fw-bold mb-3" style={{ color: "#27BD73" }}>Shades of Leadership</h1>
             <p className="lead mb-4" style={{ color: "#242E42" }}>Where Leadership Meets Color and Character</p>
             <div className="d-flex flex-column flex-md-row justify-content-center align-items gap-3">
