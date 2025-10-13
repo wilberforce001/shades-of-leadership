@@ -152,6 +152,17 @@ section {
   padding-bottom: 5px;
 }
 
+.navbar .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar-brand-custom span {
+  font-size: 1.5rem;
+  white-space: nowrap;
+}
+
 .navbar .nav-link-custom:hover {
   color: #ffdd33 !important; /* gold hover */
 }
@@ -172,10 +183,25 @@ section {
   white-space: nowrap;
 }
 
-.navbar .navbar-brand, 
-.navbar .navbar-toggler {
-  align-items: center;
-  display: flex;
+.nav-links-custom {
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+}
+
+.nav-link-custom {
+  color: #ffffff !important;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  transition: all 0.3s ease;
+}
+
+.nav-link-custom:hover {
+  color: #ffdd33 !important; 
+  transform: translateY(-2px);
+}
+
+.nav-link-custom.active {
+  color: #ee2b2b !important; /* Red active link */
 }
 
 .custom-navbar .container {
@@ -196,4 +222,25 @@ section {
     .navbar-brand-custom img {
     height: 35px; /* reduce logo slightly too */
   }
+}
+
+.nav-links-custom {
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+}
+
+.nav-link-custom {
+  color: #ffffff !important;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  transition: all 0.3s ease;
+}
+
+.nav-link-custom:hover {
+  color: #ffdd33 !important; /* Gold hover */
+  transform: translateY(-2px);
+}
+
+.nav-link-custom.active {
+  color: #ee2b2b !important; /* Red active link */
 }

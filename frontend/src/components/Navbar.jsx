@@ -31,7 +31,7 @@ function NavigationBar() {
           <span>Shades of Leadership</span>
         </Navbar.Brand>
 
-        {/* Toggle button (on the same line, right side) */}
+        {/* Toggle button */}
         <Navbar.Toggle
           aria-controls="basic-navbar-nav"
           className="border-0 ms-auto"
@@ -42,14 +42,28 @@ function NavigationBar() {
 
         {/* Collapsible links */}
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ms-auto text-start">
-            <Nav.Link href="/" style={linkStyle}>Home</Nav.Link>
-            <Nav.Link href="/episodes" style={linkStyle}>Episodes</Nav.Link>
-            <Nav.Link href="/about" style={linkStyle}>About</Nav.Link>
-            <Nav.Link href="/guests" style={linkStyle}>Guests</Nav.Link>
-            <Nav.Link href="/apply" style={linkStyle}>Be a Guest</Nav.Link>
-            <Nav.Link href="/resources" style={linkStyle}>Resources</Nav.Link>
-            <Nav.Link href="/contact" style={linkStyle}>Contact</Nav.Link>
+          <Nav className="text-start nav-links-custom">
+            <Nav.Link href="/" className="nav-link-custom">
+              Home
+            </Nav.Link>
+            <Nav.Link href="/episodes" className="nav-link-custom">
+              Episodes
+            </Nav.Link>
+            <Nav.Link href="/about" className="nav-link-custom">
+              About
+            </Nav.Link>
+            <Nav.Link href="/guests" className="nav-link-custom">
+              Guests
+            </Nav.Link>
+            <Nav.Link href="/apply" className="nav-link-custom">
+              Be a Guest
+            </Nav.Link>
+            <Nav.Link href="/resources" className="nav-link-custom">
+              Resources
+            </Nav.Link>
+            <Nav.Link href="/contact" className="nav-link-custom">
+              Contact
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
@@ -57,11 +71,4 @@ function NavigationBar() {
   );
 }
 
-const linkStyle = {
-  color: "#FFFFFF",
-  fontWeight: "500",
-  marginLeft: "1rem",
-  textDecoration: "none",
-};
-
-export default NavigationBar;  
+export default NavigationBar;
