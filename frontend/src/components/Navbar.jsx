@@ -15,7 +15,7 @@ function NavigationBar() {
         {/* Brand on the left */}
         <Navbar.Brand
           href="/"
-          className="fw-bold fs-4"
+          className="fw-bold fs-4 d-flex align-items-center"
           style={{ color: "#FFDD33", fontWeight: "600", textDecoration: "none" }}
         >
           <img
@@ -27,18 +27,15 @@ function NavigationBar() {
           <span>Shades of Leadership</span>
         </Navbar.Brand>
 
-        {/* Toggle button for mobile */}
-        <div className="ms-auto">
+        {/* Toggle button aligned to the right */}
         <Navbar.Toggle
           aria-controls="basic-navbar-nav"
-          style={{ backgroundColor: "#FFDD33" }}
+          className="border-0"
+          style={{ backgroundColor: "#FFDD33", marginLeft: "auto" }}
         />
-        </div>
 
-        {/* Nav links */}
-        <Navbar.Collapse
-          id="basic-navbar-nav"
-        >
+        {/* Collapsible Nav links */}
+        <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto text-start">
             <Nav.Link href="/" style={linkStyle}>
               Home
