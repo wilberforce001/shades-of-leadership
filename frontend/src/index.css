@@ -163,6 +163,11 @@ section {
   white-space: nowrap;
 }
 
+.navbar-brand-custom {
+  display: flex;
+  align-items: center;
+}
+
 .navbar .nav-link-custom:hover {
   color: #ffdd33 !important; /* gold hover */
 }
@@ -188,10 +193,10 @@ section {
   padding-left: 0 !important;
 }
 
-.nav-link-custom {
+.navbar .nav-link-custom {
   color: #ffffff !important;
   font-weight: 500;
-  padding: 0.5rem 1rem;
+  padding: 0.09rem 0.4rem !important;
   transition: all 0.3s ease;
 }
 
@@ -208,9 +213,27 @@ section {
   justify-content: space-between !important;
 }
 
+.custom-navbar {
+  border-radius: 12px;
+  padding-top: 0.4rem !important;
+  padding-bottom: 0.4rem !important;
+}
+
+.navbar-toggler {
+  align-self: center !important;
+  transition: transform 0.2s ease;
+  margin-right: 0 !important;
+}
+
+.navbar-toggler:hover {
+  background-color: #ee2b2b !important;
+  transform: scale(1.05);
+}
+
+
 @media (max-width: 992px) {
   .navbar-brand-custom span {
-    font-size: 1.25rem; /* slightly smaller */
+    font-size: 1.25rem; 
   }
 }
 
@@ -224,16 +247,50 @@ section {
   }
 }
 
+@media (max-width: 992px) {
+  .custom-navbar {
+    padding-top: 0.4rem !important;
+    padding-bottom: 0.4rem !important;
+  }
+
+  .navbar-toggle-custom {
+    transform: translateY(-2px); /* tweak if toggle appears slightly lower */
+  }
+}
+
+@media (max-width: 992px) {
+  /* Slightly reduce padding so radius doesn't push down toggle */
+  .custom-navbar {
+    padding-top: 0.3rem !important;
+    padding-bottom: 0.3rem !important;
+  }
+
+  /* Adjust toggle alignment */
+  .navbar-toggler {
+    transform: translateY(-2px);
+  }
+
+  /* Stack links with spacing */
+  .nav-links-custom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-link-custom {
+    margin: 0.4rem 0;
+  }
+}
+
+/* On large screens: push links fully to right inside container */
+@media (min-width: 992px) {
+  .nav-links-custom {
+    margin-left: auto !important;
+  }
+}
+
 .nav-links-custom {
   margin-left: 0 !important;
   padding-left: 0 !important;
-}
-
-.nav-link-custom {
-  color: #ffffff !important;
-  font-weight: 500;
-  padding: 0.5rem 1rem;
-  transition: all 0.3s ease;
 }
 
 .nav-link-custom:hover {
@@ -243,4 +300,21 @@ section {
 
 .nav-link-custom.active {
   color: #ee2b2b !important; /* Red active link */
+}
+
+.navbar-toggle-custom {
+  background-color: #ffdd33 !important;
+  height: 40px;
+  width: 48px;
+  transition: transform 0.2s ease;
+}
+
+/* Vertically align the toggle perfectly */
+.custom-navbar .navbar-toggle-custom {
+  align-self: center;
+}
+
+.navbar-toggle-custom:hover {
+  background-color: #ee2b2b !important;
+  transform: scale(1.05);
 }

@@ -5,14 +5,14 @@ function NavigationBar() {
   return (
     <Navbar
       expand="lg"
-      className="py-3 shadow-sm"
+      className="py-1 shadow-sm custom-navbar"
       style={{
         backgroundColor: "#242E42",
         fontFamily: "'Poppins', sans-serif",
-        borderRadius: "15px"
+        borderRadius: "12px"
       }}
     >
-      <Container fluid="sm" className="px-4">
+      <Container fluid className="px-2">
         {/* Brand section */}
         <Navbar.Brand
           href="/"

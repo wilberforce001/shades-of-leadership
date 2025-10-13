@@ -1,6 +1,6 @@
 function Footer() {
   return (
-    <footer className="text-center py-3 mt-5"
+    <footer className="text-center py-1 mt-5"
     style={{ 
       backgroundColor: "#242E42",
       color: "#FFFFFF",
