@@ -5,17 +5,17 @@ function NavigationBar() {
   return (
     <Navbar
       expand="lg"
-      className="py-3 shadow-sm custom-navbar"
+      className="py-3 shadow-sm"
       style={{
         backgroundColor: "#242E42",
         fontFamily: "'Poppins', sans-serif",
       }}
     >
       <Container>
-        {/* Brand */}
+        {/* Brand section */}
         <Navbar.Brand
           href="/"
-          className="fw-bold fs-4 d-flex align-items-center"
+          className="fw-bold fs-4 d-flex align-items-center navbar-brand-custom"
           style={{
             color: "#FFDD33",
             fontWeight: "600",
@@ -31,39 +31,25 @@ function NavigationBar() {
           <span>Shades of Leadership</span>
         </Navbar.Brand>
 
-        {/* Toggle button — stays aligned with brand */}
+        {/* Toggle button (on the same line, right side) */}
         <Navbar.Toggle
           aria-controls="basic-navbar-nav"
-          className="border-0"
+          className="border-0 ms-auto"
           style={{
             backgroundColor: "#FFDD33",
           }}
         />
 
-        {/* Collapsible Nav links */}
+        {/* Collapsible links */}
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto text-start">
-            <Nav.Link href="/" style={linkStyle}>
-              Home
-            </Nav.Link>
-            <Nav.Link href="/episodes" style={linkStyle}>
-              Episodes
-            </Nav.Link>
-            <Nav.Link href="/about" style={linkStyle}>
-              About
-            </Nav.Link>
-            <Nav.Link href="/guests" style={linkStyle}>
-              Guests
-            </Nav.Link>
-            <Nav.Link href="/apply" style={linkStyle}>
-              Be a Guest
-            </Nav.Link>
-            <Nav.Link href="/resources" style={linkStyle}>
-              Resources
-            </Nav.Link>
-            <Nav.Link href="/contact" style={linkStyle}>
-              Contact
-            </Nav.Link>
+            <Nav.Link href="/" style={linkStyle}>Home</Nav.Link>
+            <Nav.Link href="/episodes" style={linkStyle}>Episodes</Nav.Link>
+            <Nav.Link href="/about" style={linkStyle}>About</Nav.Link>
+            <Nav.Link href="/guests" style={linkStyle}>Guests</Nav.Link>
+            <Nav.Link href="/apply" style={linkStyle}>Be a Guest</Nav.Link>
+            <Nav.Link href="/resources" style={linkStyle}>Resources</Nav.Link>
+            <Nav.Link href="/contact" style={linkStyle}>Contact</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
@@ -78,4 +64,4 @@ const linkStyle = {
   textDecoration: "none",
 };
 
-export default NavigationBar;
+export default NavigationBar;  

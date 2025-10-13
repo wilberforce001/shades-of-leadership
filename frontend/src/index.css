@@ -162,7 +162,14 @@ section {
 }
 
 .navbar .container {
-  justify-content: flex-start !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar-brand-custom span {
+  font-size: 1.5rem;
+  white-space: nowrap;
 }
 
 .navbar .navbar-brand, 
@@ -173,4 +180,20 @@ section {
 
 .custom-navbar .container {
   justify-content: space-between !important;
+}
+
+@media (max-width: 992px) {
+  .navbar-brand-custom span {
+    font-size: 1.25rem; /* slightly smaller */
+  }
+}
+
+@media (max-width: 576px) {
+  .navbar-brand-custom span {
+    font-size: 1rem;
+  }
+
+    .navbar-brand-custom img {
+    height: 35px; /* reduce logo slightly too */
+  }
 }
