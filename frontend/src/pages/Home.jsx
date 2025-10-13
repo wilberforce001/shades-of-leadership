@@ -8,18 +8,20 @@ function Home() {
       <>
         {/* Hero Section */}
         <section className="text-center py-5"
-        style={{ background: "242E42", color: "",}}
+        style={{ background: "1E293B", color: "#F8FAFC",}}
         >
           <Container fluid>
-            <h1 className="display-4 fw-bold mb-3">Shades of Leadership</h1>
-            <p className="lead mb-4" style={{ color: "#FFDD33" }}>Where Leadership Meets Color and Character</p>
+            <h1 className="display-4 fw-bold mb-3" style={{ color: "#FFDD33" }}>Shades of Leadership</h1>
+            <p className="lead mb-4" style={{ color: "#CBD5E1" }}>Where Leadership Meets Color and Character</p>
             <div>
               <Button variant="warning" className="me-3"
               style={{ 
                 backgroundColor: "#FFDD33",
                 borderColor: "#FFDD33",
                 color: "#000000",
-                fontWeight: "500",
+                fontWeight: "600",
+                padding: "0.75rem 1.5rem",
+                borderRadius: "8px",
               }}
               >
                 Listen Now
@@ -28,9 +30,12 @@ function Home() {
               style={{
                 borderColor: "#EE2B2B",
                 color: "#EE2B2B",
-                fontWeight: "500",
+                fontWeight: "600",
+                padding: "0.75rem 1.5rem",
+                borderRadius: "8px",
               }}
-              >Apply to Be a Guest</Button>
+              >Apply to Be a Guest
+              </Button>
             </div>
           </Container>
         </section>
