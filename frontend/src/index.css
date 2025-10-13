@@ -196,7 +196,6 @@ section {
 .navbar .nav-link-custom {
   color: #ffffff !important;
   font-weight: 500;
-  padding: 0.09rem 0.4rem !important;
   transition: all 0.3s ease;
 }
 
@@ -228,6 +227,26 @@ section {
 .navbar-toggler:hover {
   background-color: #ee2b2b !important;
   transform: scale(1.05);
+}
+
+.navbar-toggle-custom {
+  background-color: #ffdd33 !important;
+  height: 40px;  /* current height */
+  width: 48px;   /* current width */
+  transition: transform 0.2s ease;
+  border: none;
+  border-radius: 8px;
+}
+
+/* Hover effect */
+.navbar-toggle-custom:hover {
+  background-color: #ee2b2b !important;
+  transform: scale(1.05);
+}
+
+/* Center vertically inside navbar */
+.custom-navbar .navbar-toggle-custom {
+  align-self: center;
 }
 
 
