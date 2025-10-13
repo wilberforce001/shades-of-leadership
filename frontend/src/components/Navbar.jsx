@@ -11,19 +11,15 @@ function NavigationBar() {
         fontFamily: "'Poppins', sans-serif",
       }}
     >
-      <Container
-        fluid
-        className="d-flex align-items-center justify-content-between flex-nowrap"
-      >
-        {/* Brand on the left */}
+      <Container>
+        {/* Brand */}
         <Navbar.Brand
           href="/"
-          className="fw-bold fs-4 d-flex align-items-center mb-0"
+          className="fw-bold fs-4 d-flex align-items-center"
           style={{
             color: "#FFDD33",
             fontWeight: "600",
             textDecoration: "none",
-            whiteSpace: "nowrap",
           }}
         >
           <img
@@ -35,16 +31,18 @@ function NavigationBar() {
           <span>Shades of Leadership</span>
         </Navbar.Brand>
 
-        {/* Toggle button aligned to the right */}
+        {/* Toggle button — stays aligned with brand */}
         <Navbar.Toggle
           aria-controls="basic-navbar-nav"
-          className="border-0 ms-auto"
-          style={{ backgroundColor: "#FFDD33" }}
+          className="border-0"
+          style={{
+            backgroundColor: "#FFDD33",
+          }}
         />
 
         {/* Collapsible Nav links */}
-        <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
-          <Nav className="text-start">
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="ms-auto text-start">
             <Nav.Link href="/" style={linkStyle}>
               Home
             </Nav.Link>
