@@ -1,36 +1,77 @@
-import { Link } from 'react-router-dom'; 
-import { Navbar, Nav, Container } from 'react-bootstrap';
-import logo from '../assets/logo.jpg';
-
+import { Navbar, Nav, Container } from "react-bootstrap";
+import logo from "../assets/logo.jpg";
 
 function NavigationBar() {
   return (
-    <Navbar bg='light' expand='lg' className='shadow-sm'>
-      <Container>
-        <Navbar.Brand href='/' className='d-flex align-items-center'>
-          <img 
-          src={logo} 
-          alt="Shades of Leadership Logo" 
-          height="50"
-          className='me-2'
+    <Navbar
+      expand="lg"
+      className="py-3 shadow-sm"
+      style={{
+        backgroundColor: "#242E42",
+        fontFamily: "'Poppins', sans-serif",
+      }}
+    >
+      <Container fluid>
+        {/* Brand on the left */}
+        <Navbar.Brand
+          href="/"
+          className="d-flex align-items-center"
+          style={{ color: "#FFDD33", fontWeight: "600", textDecoration: "none" }}
+        >
+          <img
+            src={logo}
+            alt="Shades of Leadership Logo"
+            height="45"
+            className="me-2 rounded"
           />
-          <span className='fw-bold text-primary'>Shades of Leadership</span>
-          </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" /> 
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ms-auto">
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href='/episodes'>Episodes</Nav.Link>
-            <Nav.Link href='/about'>About</Nav.Link>
-            <Nav.Link href='/guests'>Guests</Nav.Link>
-            <Nav.Link href='/apply'>Be a Guest</Nav.Link>
-            <Nav.Link href='/resources'>Resources</Nav.Link>
-            <Nav.Link href="/contact">Contact</Nav.Link>
+          <span>Shades of Leadership</span>
+        </Navbar.Brand>
+
+        {/* Toggle button for mobile */}
+        <Navbar.Toggle
+          aria-controls="basic-navbar-nav"
+          style={{ backgroundColor: "#FFDD33" }}
+        />
+
+        {/* Nav links */}
+        <Navbar.Collapse
+          id="basic-navbar-nav"
+          className="justify-content-lg-end justify-content-start"
+        >
+          <Nav className="text-start">
+            <Nav.Link href="/" style={linkStyle}>
+              Home
+            </Nav.Link>
+            <Nav.Link href="/episodes" style={linkStyle}>
+              Episodes
+            </Nav.Link>
+            <Nav.Link href="/about" style={linkStyle}>
+              About
+            </Nav.Link>
+            <Nav.Link href="/guests" style={linkStyle}>
+              Guests
+            </Nav.Link>
+            <Nav.Link href="/apply" style={linkStyle}>
+              Be a Guest
+            </Nav.Link>
+            <Nav.Link href="/resources" style={linkStyle}>
+              Resources
+            </Nav.Link>
+            <Nav.Link href="/contact" style={linkStyle}>
+              Contact
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>
   );
 }
+
+const linkStyle = {
+  color: "#FFFFFF",
+  fontWeight: "500",
+  marginLeft: "1rem",
+  textDecoration: "none",
+};
 
 export default NavigationBar;

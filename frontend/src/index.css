@@ -151,3 +151,18 @@ section {
   display: inline-block;
   padding-bottom: 5px;
 }
+
+.navbar .nav-link-custom:hover {
+  color: #ffdd33 !important; /* gold hover */
+}
+
+.navbar .navbar-brand:hover {
+  color: #ee2b2b !important; /* red hover on brand name */
+  transition: color 0.3s ease;
+}
+
+.navbar .container {
+  justify-content: flex-start !important;
+}
+
+
