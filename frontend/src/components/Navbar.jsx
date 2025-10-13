@@ -1,40 +1,83 @@
-import { Link } from 'react-router-dom';
-import { Navbar, Nav, Container } from 'react-bootstrap';
-import logo from '../assets/logo.jpg';
+import { Navbar, Nav, Container } from "react-bootstrap";
+import logo from "../assets/logo.jpg";
 
 function NavigationBar() {
   return (
-    <Navbar bg="light" expand="lg" className="shadow-sm py-2">
-      <Container fluid>
+    <Navbar
+      expand="lg"
+      className="py-3 shadow-sm"
+      style={{
+        backgroundColor: "#242E42",
+        fontFamily: "'Poppins', sans-serif",
+      }}
+    >
+      <Container
+        fluid
+        className="d-flex align-items-center justify-content-between flex-nowrap"
+      >
         {/* Brand on the left */}
-        <Navbar.Brand as={Link} to="/" className="d-flex align-items-center">
+        <Navbar.Brand
+          href="/"
+          className="fw-bold fs-4 d-flex align-items-center mb-0"
+          style={{
+            color: "#FFDD33",
+            fontWeight: "600",
+            textDecoration: "none",
+            whiteSpace: "nowrap",
+          }}
+        >
           <img
             src={logo}
             alt="Shades of Leadership Logo"
-            height="50"
-            className="me-2"
+            height="45"
+            className="me-2 rounded"
           />
-          <span className="fw-bold text-primary">Shades of Leadership</span>
+          <span>Shades of Leadership</span>
         </Navbar.Brand>
 
-        {/* Toggle button for small screens */}
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        {/* Toggle button aligned to the right */}
+        <Navbar.Toggle
+          aria-controls="basic-navbar-nav"
+          className="border-0 ms-auto"
+          style={{ backgroundColor: "#FFDD33" }}
+        />
 
-        {/* Nav links — left on small screens, right on large */}
-        <Navbar.Collapse id="basic-navbar-nav" className="justify-content-lg-end justify-content-start">
+        {/* Collapsible Nav links */}
+        <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
           <Nav className="text-start">
-            <Nav.Link as={Link} to="/">Home</Nav.Link>
-            <Nav.Link as={Link} to="/episodes">Episodes</Nav.Link>
-            <Nav.Link as={Link} to="/about">About</Nav.Link>
-            <Nav.Link as={Link} to="/guests">Guests</Nav.Link>
-            <Nav.Link as={Link} to="/apply">Be a Guest</Nav.Link>
-            <Nav.Link as={Link} to="/resources">Resources</Nav.Link>
-            <Nav.Link as={Link} to="/contact">Contact</Nav.Link>
+            <Nav.Link href="/" style={linkStyle}>
+              Home
+            </Nav.Link>
+            <Nav.Link href="/episodes" style={linkStyle}>
+              Episodes
+            </Nav.Link>
+            <Nav.Link href="/about" style={linkStyle}>
+              About
+            </Nav.Link>
+            <Nav.Link href="/guests" style={linkStyle}>
+              Guests
+            </Nav.Link>
+            <Nav.Link href="/apply" style={linkStyle}>
+              Be a Guest
+            </Nav.Link>
+            <Nav.Link href="/resources" style={linkStyle}>
+              Resources
+            </Nav.Link>
+            <Nav.Link href="/contact" style={linkStyle}>
+              Contact
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>
   );
 }
+
+const linkStyle = {
+  color: "#FFFFFF",
+  fontWeight: "500",
+  marginLeft: "1rem",
+  textDecoration: "none",
+};
 
 export default NavigationBar;
