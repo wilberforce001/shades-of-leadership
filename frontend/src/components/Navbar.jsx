@@ -11,11 +11,11 @@ function NavigationBar() {
         fontFamily: "'Poppins', sans-serif",
       }}
     >
-      <Container fluid>
+      <Container>
         {/* Brand on the left */}
         <Navbar.Brand
           href="/"
-          className="d-flex align-items-center"
+          className="fw-bold fs-4"
           style={{ color: "#FFDD33", fontWeight: "600", textDecoration: "none" }}
         >
           <img
@@ -28,17 +28,18 @@ function NavigationBar() {
         </Navbar.Brand>
 
         {/* Toggle button for mobile */}
+        <div className="ms-auto">
         <Navbar.Toggle
           aria-controls="basic-navbar-nav"
           style={{ backgroundColor: "#FFDD33" }}
         />
+        </div>
 
         {/* Nav links */}
         <Navbar.Collapse
           id="basic-navbar-nav"
-          className="justify-content-lg-end justify-content-start"
         >
-          <Nav className="text-start">
+          <Nav className="ms-auto text-start">
             <Nav.Link href="/" style={linkStyle}>
               Home
             </Nav.Link>
