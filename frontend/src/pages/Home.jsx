@@ -11,8 +11,8 @@ function Home() {
         style={{ background: "1E293B", color: "#F8FAFC",}}
         >
           <Container fluid>
-            <h1 className="display-4 fw-bold mb-3" style={{ color: "#FFDD33" }}>Shades of Leadership</h1>
-            <p className="lead mb-4" style={{ color: "#CBD5E1" }}>Where Leadership Meets Color and Character</p>
+            <h1 className="display-4 fw-bold mb-3" style={{ color: "#27BD73" }}>Shades of Leadership</h1>
+            <p className="lead mb-4" style={{ color: "#242E42" }}>Where Leadership Meets Color and Character</p>
             <div className="d-flex flex-column flex-md-row justify-content-center align-items gap-3">
               <Button variant="warning" className="mb-2 mb-md-0"
               style={{ 
@@ -28,8 +28,8 @@ function Home() {
               </Button>
               <Button variant="outline-light"
               style={{
-                borderColor: "#EE2B2B",
-                color: "#EE2B2B",
+                borderColor: "#2B8CEE",
+                color: "#2B8CEE",
                 fontWeight: "600",
                 padding: "0.75rem 1.5rem",
                 borderRadius: "8px",
@@ -96,7 +96,7 @@ function Home() {
                     href="https://rolecolorfinder.com"
                     target="_blank"
                     rel="noreferrer"
-                    style={{ color: "#EE2B2B", fontWeight: "500"}}
+                    style={{ color: "#2B8CEE", fontWeight: "500"}}
                   >
                     RoleColorFinder
                   </a>
