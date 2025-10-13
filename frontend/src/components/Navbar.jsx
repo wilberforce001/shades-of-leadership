@@ -5,7 +5,7 @@ function NavigationBar() {
   return (
     <Navbar
       expand="lg"
-      className="py-3 shadow-sm"
+      className="py-3 shadow-sm custom-navbar"
       style={{
         backgroundColor: "#242E42",
         fontFamily: "'Poppins', sans-serif",

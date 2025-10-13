@@ -161,9 +161,16 @@ section {
   transition: color 0.3s ease;
 }
 
+.navbar .container {
+  justify-content: flex-start !important;
+}
+
 .navbar .navbar-brand, 
 .navbar .navbar-toggler {
   align-items: center;
   display: flex;
 }
 
+.custom-navbar .container {
+  justify-content: space-between !important;
+}
