@@ -42,7 +42,7 @@ function NavigationBar() {
 
         {/* Collapsible links */}
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="text-start nav-links-custom">
+          <Nav className="ms-auto text-start nav-links-custom">
             <Nav.Link href="/" className="nav-link-custom">
               Home
             </Nav.Link>
