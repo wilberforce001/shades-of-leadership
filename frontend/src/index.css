@@ -439,3 +439,79 @@ section {
   background-color: #4c1d95;
   border-color: #4c1d95;
 }
+
+.bg-light {
+  background-color: #f8fafc !important;
+}
+
+.guest-app-page .card {
+  border-radius: 16px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.guest-app-page .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.guest-app-page h2, h4 {
+  color: #242E42;
+}
+
+.guest-app-page .form-control {
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.guest-app-page .form-control:focus {
+  border-color: #FFDD33;
+  box-shadow: 0 0 0 0.25rem rgba(255, 221, 51, 0.3);
+}
+
+.guest-app-page button.btn-primary {
+  background-color: #242E42;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 24px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.guest-app-page button.btn-primary:hover {
+  background-color: #FFDD33;
+  color: #242E42;
+  transform: translateY(-2px);
+}
+
+.guest-app-page .blockquote {
+  background-color: #fff;
+  border-left: 5px solid #FFDD33;
+  padding: 20px;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.about-page .blockquote {
+  background-color: #fff;
+  border-left: 5px solid #FFDD33;
+  padding: 20px;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.resources-page .blockquote {
+  background-color: #fff;
+  border-left: 5px solid #FFDD33;
+  padding: 20px;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.resources-page .card:hover {
+  transform: translateY(-5px);
+  transition: 0.3s ease;
+}

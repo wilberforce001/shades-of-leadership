@@ -4,7 +4,7 @@ import { Container, Row, Col, Card, Form, Button } from "react-bootstrap";
 
 function GuestApplication() {
     return (
-        <div className="py-5 bg-light">
+        <div className="py-5 bg-light guest-app-page">
             <Container>
                 {/* Intro Section */}
                 <Row className="justify-content-center text-center mb-5">

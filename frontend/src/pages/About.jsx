@@ -3,7 +3,7 @@ import profileImage from '../assets/Divakar.jpg';
 
 function About() {
     return (
-        <section className="py-5">
+        <section className="py-5 about-page">
             <Container>
                 {/* Page Header */}
                 <div className="text-center mb-4">
