@@ -388,3 +388,21 @@ section {
   border-color: #EE2B2B !important;
   color: #fff !important;
 }
+
+.episodes-page .card img {
+  width: 100%;
+  height: 150px;
+}
+
+.about-section {
+  background-color: #f8f9fa;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+h1.fw-bold {
+  background: linear-gradient(90deg, #007bff, #6610f2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

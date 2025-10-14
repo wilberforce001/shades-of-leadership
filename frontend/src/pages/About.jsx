@@ -6,25 +6,25 @@ function About() {
         <section className="py-5">
             <Container>
                 {/* Page Header */}
-                <div className="text-center mb-5">
+                <div className="text-center mb-4">
                     <h1 className="fw-bold">About the Show</h1>
-                    <p className="text-muted">Exploring leadership, color, and identity through powerful conversations.</p>
+                    <p className="text-muted lead">Exploring leadership, color, and identity through powerful conversations.</p>
                 </div>
 
                 {/* Story Section */}
-                <Row className="align-items-center mb-5">
+                <Row className="align-items-center mb-5 about-section">
                     <Col md={6}>
                         <Image 
                             src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80"
                             alt="Microphone and podcast setup"
                             fluid
                             rounded
-                            className="shadow-sm"
+                            className="shadow-sm mb-4"
                         />
                     </Col>
 
                     <Col md={6}>
-                        <h3 className="fw-semibold mb-3">The Story Behind "Shades"</h3>
+                        <h3 className="fw-semibold mb-2">The Story Behind "Shades"</h3>
                         <p>
                             <strong>Shades of Leadership</strong> was born from the vision of 
                             <a
@@ -47,19 +47,19 @@ function About() {
                 </Row>
 
                 {/* Why "Shades" */}
-                <Row className="align-items-center mb-5 flex-md-row-reverse">
+                <Row className="align-items-center mb-5 flex-md-row-reverse about-section">
                     <Col md={6}>
                     <Image 
-                    src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80"
+                    src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80"
                     alt="Color palette concept"
                     fluid
                     rounded
-                    className="shadow-sm"
+                    className="shadow-sm mb-4"
                     />
                     </Col>
 
                     <Col md={6}>
-                    <h3 className="fw-semibold mb-3">Why "Shades"?</h3>
+                    <h3 className="fw-semibold mb-2">Why "Shades"?</h3>
                     <p>
                         "Shades" represents the idea that leadership isn't black and white. Each leader
                         brings a unique hue - a distinct perspective shaped by experience, empathy, and emotion. 

@@ -42,7 +42,7 @@ function Episodes() {
         <Container className="episodes-page">
             <div className="text-center mb-5">
                 <h1 className="fw-bold">Episodes</h1>
-                <p className="text-muted">Discover conversations exploring leadership, color, and change.</p>
+                <p className="text-muted lead">Discover conversations exploring leadership, color, and change.</p>
             </div>
 
             <Form className="mb-4">
