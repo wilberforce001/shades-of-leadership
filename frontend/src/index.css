@@ -225,7 +225,7 @@ section {
 }
 
 .navbar-toggler:hover {
-  background-color: #ee2b2b !important;
+  background-color: #2bee76 !important;
   transform: scale(1.05);
 }
 
@@ -336,4 +336,55 @@ section {
 .navbar-toggle-custom:hover {
   background-color: #ee2b2b !important;
   transform: scale(1.05);
+}
+
+.episodes-page {
+  background-color: #f8f9fb;
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+.episodes-page h1 {
+  color: #242E42;
+  font-weight: 700;
+}
+
+.episodes-page p {
+  color: #6c757d;
+}
+
+.episodes-page .card {
+  border: none !important;
+  border-radius: 16px !important;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shodow 0.3s ease;
+}
+
+.episodes-page .card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.episodes-page .card-title {
+  color: #242E42 !important;
+  font-weight: 600 !important;
+}
+
+.episodes-page .card-title {
+  color: #242E42 !important;
+  font-weight: 600 !important;
+}
+
+.episodes-page .btn-primary {
+  background-color: #FFDD33 !important;
+  border-color: #FFDD33 !important;
+  color: #000 !important;
+  font-weight: 500;
+  border-radius: 8px;
+}
+
+.episodes-page .btn-primary:hover {
+  background-color: #EE2B2B !important;
+  border-color: #EE2B2B !important;
+  color: #fff !important;
 }
