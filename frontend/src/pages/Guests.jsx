@@ -26,18 +26,18 @@ function Guests() {
     },
   ];
 
-  const logos = [
-    "https://upload.wikimedia.org/wikipedia/en/thumb/0/05/Harvard_shield_wreath.svg/1200px-Harvard_shield_wreath.svg.png",
-    "https://upload.wikimedia.org/wikipedia/en/thumb/9/94/University_of_Southern_California_seal.svg/1200px-University_of_Southern_California_seal.svg.png",
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Teach_For_All_logo.svg/2560px-Teach_For_All_logo.svg.png",
-  ];
+const logos = [
+  "https://cdn.freebiesupply.com/images/large/2x/harvard-logo-transparent.png",
+  "https://identity.usc.edu/wp-content/uploads/2022/09/TheSeal_Reg_0921.png",
+  "https://globaleducationcoalition.unesco.org/uploads/114_Teach_For_All_color_logo_FYXkHL.png?v=QcqhDjGZVn4PeQ6wsPKlPsfLluvNIxI1-SZk-6IoBoM",
+];
 
   return (
-    <Container className="my-5">
+    <Container className="my-5 guests-page">
       {/* Header */}
-      <div className="text-center mb-5">
+      <div className="text-center mb-2">
         <h2 className="fw-bold">Our Guests</h2>
-        <p className="text-muted">Thought leaders and changemakers from around the world</p>
+        <p className="text-muted lead">Thought leaders and changemakers from around the world</p>
       </div>
 
       {/* Guest Cards */}
@@ -70,7 +70,7 @@ function Guests() {
       </Row>
 
       {/* Call to Action */}
-      <div className="text-center my-5">
+      <div className="text-center my-5 featured-logos">
         <h4 className="fw-bold mb-3">Want to be a guest on the show?</h4>
         <Button
           variant="primary"
@@ -91,7 +91,12 @@ function Guests() {
               key={i}
               src={logo}
               alt="Organization Logo"
-              style={{ height: "60px", objectFit: "contain" }}
+                style={{
+                  width: "100%",
+                  maxWidth: "150px",
+                  maxHeight: "70px",
+                  objectFit: "contain",
+                }}
             />
           ))}
         </div>

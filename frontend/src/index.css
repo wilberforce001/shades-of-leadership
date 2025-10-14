@@ -401,8 +401,41 @@ section {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
-h1.fw-bold {
+/* h1.fw-bold {
   background: linear-gradient(90deg, #007bff, #6610f2);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+} */
+
+.guests-page .card {
+  border-radius: 16px !important;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.guests-page .card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.guests-page .card-img-top {
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+}
+
+.featured-logos {
+  background-color: #f8f9fa;
+  border-radius: 16px;
+  padding: 2rem 1rem;
+  margin-top: 3rem;
+}
+
+.guests-page .btn-primary {
+  background-color: #5b21b6;
+  border-color: #5b21b6;
+}
+
+.guests-page .btn-primary:hover {
+  background-color: #4c1d95;
+  border-color: #4c1d95;
 }
