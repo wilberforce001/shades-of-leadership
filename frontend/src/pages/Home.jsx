@@ -8,7 +8,7 @@ function Home() {
       <>
         {/* Hero Section */}
         <section className="text-center py-5"
-        style={{ background: "1E293B", color: "#F8FAFC",}}
+        style={{ background: "1E293B", color: "#F8FAFC",}} 
         >
           <Container fluid="sm" className="px-4">
             <h1 className="display-4 fw-bold mb-3" style={{ color: "#27BD73" }}>Shades of Leadership</h1>
@@ -40,7 +40,7 @@ function Home() {
         </section>
 
         {/* Featured Episode */}
-        <section className="py-5" style={{ backgroundColor: "#F8F9FA" }}>
+        <section className="py-2" style={{ backgroundColor: "#F8F9FA" }}>
           <Container>
             <Row className="justify-content-center text-center mb-4">
               <Col md={8}>
@@ -66,7 +66,7 @@ function Home() {
         </section>
 
         {/* Host Section */}
-        <section className="py-5 text-center">
+        <section className="py-3 text-center">
           <Container fluid="md">
             <Row className="align-items-center justify-content-center">
               <Col md={4} className="text-center">
@@ -82,7 +82,7 @@ function Home() {
                     src={profileImage}
                     alt="Sanjay Divakar"
                     className="rounded-circle w-100 h-100 shadow mb-3"
-                    style={{ objectFit: "cover", objectPosition: "center", border: "5px solid #27BD73" }}
+                    style={{ objectFit: "cover", objectPosition: "center", border: "3px solid #27BD73" }}
                   />
                 </div>
               </Col>
@@ -109,7 +109,7 @@ function Home() {
         </section>
 
         {/* Guest Carousel */}
-        <section className="py-5 text-center" style={{ backgroundColor: "#F8F9FA" }}>
+        <section className="py-4 text-center" style={{ backgroundColor: "#F8F9FA" }}>
           <Container fluid>
             <h2 className="fw-bold mb-4"
             style={{
@@ -132,10 +132,11 @@ function Home() {
                         height: "150px",
                         objectFit: "cover",
                         objectPosition: "center",
-                        border: "4px solid #FFDD33",
+                        border: "3px solid #FFDD33",
                         margin: "0 auto",
                       }}
                     />
+                    <h2 className="mt-2 text-muted lead">Pedro Noguera</h2>
                   </Col>
                   <Col md={2}>
                     <img
@@ -147,10 +148,11 @@ function Home() {
                         height: "150px",
                         objectFit: "cover",
                         objectPosition: "center",
-                        border: "4px solid #FFDD33",
+                        border: "3px solid #FFDD33",
                         margin: "0 auto",
                       }}
                     />
+                    <h2 className="text-muted lead mt-2">Kapono Ciotti</h2>
                   </Col>
                   <Col md={2}>
                     <img
@@ -162,10 +164,11 @@ function Home() {
                         height: "150px",
                         objectFit: "cover",
                         objectPosition: "center",
-                        border: "4px solid #FFDD33",
+                        border: "3px solid #FFDD33",
                         margin: "0 auto",
                       }}
                     />
+                    <h2 className="text-muted lead mt-2">Emily Ciotti</h2>
                   </Col>
                 </Row>
               </Carousel.Item>
@@ -182,10 +185,11 @@ function Home() {
                         height: "150px",
                         objectFit: "cover",
                         objectPosition: "center",
-                        border: "4px solid #FFDD33",
+                        border: "3px solid #FFDD33",
                         margin: "0 auto",
                       }}
                     />
+                    <h2 className="text-muted lead mt-2">Lydia Willly</h2>
                   </Col>
                   <Col md={2}>
                     <img
@@ -197,10 +201,11 @@ function Home() {
                         height: "150px",
                         objectFit: "cover",
                         objectPosition: "center",
-                        border: "4px solid #FFDD33",
+                        border: "3px solid #FFDD33",
                         margin: "0 auto",
                       }}
                     />
+                    <h2 className="text-muted lead mt-2">Dolly Williams</h2>
                   </Col>
                   <Col md={2}>
                     <img
@@ -212,10 +217,11 @@ function Home() {
                         height: "150px",
                         objectFit: "cover",
                         objectPosition: "center",
-                        border: "4px solid #FFDD33",
+                        border: "3px solid #FFDD33",
                         margin: "0 auto", 
                       }}
                     />
+                    <h2 className="text-muted lead mt-2">Rachel Zipporah</h2>
                   </Col>
                 </Row>
               </Carousel.Item>
