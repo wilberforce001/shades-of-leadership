@@ -1,8 +1,35 @@
-import { Container, Row, Col, Button, Carousel } from "react-bootstrap";
+import { Container, Row, Col, Button, Carousel, Spinner, Card } from "react-bootstrap";
 import profileImage from "../assets/Sanjay-Divakar.png";
 import '../App.css'
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 function Home() {
+  const [podcasts, setPodcasts] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [showPodcasts, setShowPodcasts] = useState(false);
+  const [error, setError] = useState("");
+
+  const fetchPodcasts = async () => {
+    setLoading(true);
+    try {
+      const res = await axios.get("http://localhost:5000/api/podcasts");
+      console.log("Fetched podcasts:", res.data);
+      setPodcasts(res.data || []);
+      setError("");
+    } catch (err) {
+      console.error("Error fetching podcasts:", err);
+      alert("Failed to fetch podcasts. Please check your server connection.")
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleListenNow = () => {
+    setShowPodcasts(true);
+    fetchPodcasts();
+  }
+
   return (
     <div className="text-center" style={{ fontFamily: "Poppins, sans-serif", color: "#242E42" }}>
       <>
@@ -13,7 +40,7 @@ function Home() {
           <Container fluid="sm" className="px-4">
             <h1 className="display-4 fw-bold mb-3" style={{ color: "#27BD73" }}>Shades of Leadership</h1>
             <p className="lead mb-4" style={{ color: "#242E42" }}>Where Leadership Meets Color and Character</p>
-            <div className="d-flex flex-column flex-md-row justify-content-center align-items gap-3">
+            <div className="d-flex flex-column flex-md-row justify-content-center align-items-center gap-3">
               <Button variant="warning" className="mb-2 mb-md-0"
               style={{ 
                 backgroundColor: "#FFDD33",
@@ -23,9 +50,25 @@ function Home() {
                 padding: "0.75rem 1.5rem",
                 borderRadius: "8px",
               }}
+              onClick={handleListenNow}
+              disabled={loading}
               >
-                Listen Now
+                {loading ? (
+                  <>
+                  <Spinner 
+                  animation="border"
+                  size="sm"
+                  className="me-2"
+                  role="status"
+                  />
+                  Loading...
+                  </>
+                ) : (
+                  "Listen Now"
+                )}
               </Button>
+              {error && <p className="text-danger mt-3">{error}</p>}
+
               <Button variant="outline-light"
               style={{
                 borderColor: "#2B8CEE",
@@ -38,6 +81,45 @@ function Home() {
             </div>
           </Container>
         </section>
+
+        {/* Podcasts displayed after click */}
+        {showPodcasts && (
+          <section className="py-5" style={{ backgroundColor: "#F8FAFC" }}>
+            <Container>
+              <h2 className="text-center mb-5 fw-bold" style={{ color: "#1E293B" }}>Latest Podcasts</h2>
+              <Row className="gy-4">
+                {Array.isArray(podcasts) && podcasts.length > 0 ? (
+                  podcasts.map((podcast) => (
+                    <Col key={podcast._id || podcast.title} md={6}>
+                    <Card className="h-100 shadow-sm border-0"
+                    style={{
+                      borderRadius: "12px",
+                      overflow: "hidden",
+                      backgroundColor: "#FFFFFF",
+                    }}
+                    >
+                      <Card.Body className="d-flex flex-column justify-content-between">
+                        <div>
+                          <Card.Title className="fw-bold mb-4" style={{ color: "#1E293B" }}>{podcast.title}</Card.Title>
+                          <Card.Text style={{ color: "#475569", fontSize: "0.95rem", marginBottom: "1rem" }}>{podcast.description}</Card.Text>
+                        </div>
+                        <div className="text-center mt-auto">
+                        <audio controls style={{ width: "100%", borderRadius: "8px", backgroundColor: "#E2E8F0", }}>
+                          <source src={podcast.audioUrl} type="audio/mpeg"/>
+                          Your browser does not support the audio element.
+                        </audio>
+                        </div>
+                      </Card.Body>
+                    </Card>
+                    </Col>
+                  ))
+                ) : (
+                  <p className="text-center text-muted">No podcasts available at the moment.</p>
+                )}
+              </Row>
+            </Container>
+          </section>
+        )}
 
         {/* Featured Episode */}
         <section className="py-2" style={{ backgroundColor: "#F8F9FA" }}>
