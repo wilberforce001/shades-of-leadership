@@ -11,7 +11,9 @@ const app = express();
 connectDB();
 
 // Middleware
-app.use(cors());
+app.use(cors({
+    origin: "https://shades-of-leadership.onrender.com",
+}));
 app.use(express.json());
 
 // Routes

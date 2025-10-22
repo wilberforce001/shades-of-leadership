@@ -10,10 +10,12 @@ function Home() {
   const [showPodcasts, setShowPodcasts] = useState(false);
   const [error, setError] = useState("");
 
+  const API_BASE_URL = import.meta.env.VITE_API_URL;
+
   const fetchPodcasts = async () => {
     setLoading(true);
     try {
-      const res = await axios.get("http://localhost:5000/api/podcasts");
+      const res = await axios.get(`${API_BASE_URL}/api/podcasts`);
       console.log("Fetched podcasts:", res.data);
       setPodcasts(res.data || []);
       setError("");
