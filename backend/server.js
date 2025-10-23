@@ -4,6 +4,7 @@ import cors from "cors";
 import connectDB from "./config/db.js";
 import podcastRoutes from './routes/podcastRoutes.js'
 import Podcast from "./models/Podcast.js";
+import wordpressRoutes from "./routes/wordpress.js";
 
 dotenv.config();
 const app = express();
@@ -12,12 +13,19 @@ connectDB();
 
 // Middleware
 app.use(cors({
-    origin: "https://shades-of-leadership.onrender.com",
+    origin: [
+        "https://shades-of-leadership.onrender.com",
+        "http://localhost:5173"
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true
 }));
+
 app.use(express.json());
 
 // Routes
 app.use("/api/podcasts", podcastRoutes);
+app.use("/api/wordpress", wordpressRoutes);
 
 // Test route
 app.get("/", (req, res) => {
