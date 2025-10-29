@@ -1,27 +1,42 @@
-import { Container, Row, Col, Button, Carousel, Spinner, Card } from "react-bootstrap";
-import profileImage from "../assets/Sanjay-Divakar.png";
-import '../App.css'
+import { Container, Row, Col, Button, Spinner, Card } from "react-bootstrap";
+import "../App.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
 function Home() {
+  const [homeData, setHomeData] = useState(null);
   const [podcasts, setPodcasts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [showPodcasts, setShowPodcasts] = useState(false);
-  const [error, setError] = useState("");
 
-  const API_BASE_URL = import.meta.env.VITE_API_URL;
+  // Fetch Home Page data directly from WordPress (ACF fields)
+  const fetchHomeData = async () => {
+    try {
+      const res = await axios.get(
+        "https://sol.rolecolorfinder.com/wp-json/wp/v2/pages?slug=home"
+      );
+      console.log("WordPress home data:", res.data);
 
+      if (res.data && res.data.length > 0) {
+        setHomeData(res.data[0].acf); // Store ACF data
+      }
+    } catch (err) {
+      console.error("Error fetching home data:", err);
+    }
+  };
+
+  // Fetch Podcasts from backend API
   const fetchPodcasts = async () => {
     setLoading(true);
     try {
-      const res = await axios.get(`${API_BASE_URL}/api/podcasts`);
+      const res = await axios.get(
+        `${import.meta.env.VITE_API_URL}/api/wordpress/podcasts`
+      );
       console.log("Fetched podcasts:", res.data);
       setPodcasts(res.data || []);
-      setError("");
     } catch (err) {
       console.error("Error fetching podcasts:", err);
-      alert("Failed to fetch podcasts. Please check your server connection.")
+      alert("Failed to fetch podcasts. Please check your server connection.");
     } finally {
       setLoading(false);
     }
@@ -30,116 +45,190 @@ function Home() {
   const handleListenNow = () => {
     setShowPodcasts(true);
     fetchPodcasts();
+  };
+
+  useEffect(() => {
+    fetchHomeData();
+  }, []);
+
+  // Loading fallback
+  if (!homeData) {
+    return (
+      <div className="text-center py-5">
+        <Spinner animation="border" role="status" />
+        <p>Loading homepage content...</p>
+      </div>
+    );
   }
 
+  // Page Content
   return (
-    <div className="text-center" style={{ fontFamily: "Poppins, sans-serif", color: "#242E42" }}>
+    <div
+      className="text-center"
+      style={{ fontFamily: "Poppins, sans-serif", color: "#242E42" }}
+    >
       <>
-        {/* Hero Section */}
-        <section className="text-center py-5"
-        style={{ background: "1E293B", color: "#F8FAFC",}} 
+        {/*Hero Section */}
+        <section
+          className="text-center py-5"
+          style={{ background: "#FFFFFF", color: "#F8FAFC" }}
         >
           <Container fluid="sm" className="px-4">
-            <h1 className="display-4 fw-bold mb-3" style={{ color: "#27BD73" }}>Shades of Leadership</h1>
-            <p className="lead mb-4" style={{ color: "#242E42" }}>Where Leadership Meets Color and Character</p>
+            <h1
+              className="display-4 fw-bold mb-3"
+              style={{ color: "#27BD73" }}
+            >
+              {homeData.hero_title}
+            </h1>
+            <p className="lead mb-4" style={{ color: "#242E42" }}>
+              {homeData.hero_tagline}
+            </p>
+
             <div className="d-flex flex-column flex-md-row justify-content-center align-items-center gap-3">
-              <Button variant="warning" className="mb-2 mb-md-0"
-              style={{ 
-                backgroundColor: "#FFDD33",
-                borderColor: "#FFDD33",
-                color: "#000000",
-                fontWeight: "600",
-                padding: "0.75rem 1.5rem",
-                borderRadius: "8px",
-              }}
-              onClick={handleListenNow}
-              disabled={loading}
+              <Button
+                variant="warning"
+                className="mb-2 mb-md-0"
+                style={{
+                  backgroundColor: "#FFDD33",
+                  borderColor: "#FFDD33",
+                  color: "#000000",
+                  fontWeight: "600",
+                  padding: "0.75rem 1.5rem",
+                  borderRadius: "8px",
+                }}
+                onClick={handleListenNow}
+                disabled={loading}
               >
                 {loading ? (
                   <>
-                  <Spinner 
-                  animation="border"
-                  size="sm"
-                  className="me-2"
-                  role="status"
-                  />
-                  Loading...
+                    <Spinner
+                      animation="border"
+                      size="sm"
+                      className="me-2"
+                      role="status"
+                    />
+                    Loading...
                   </>
                 ) : (
-                  "Listen Now"
+                  homeData.cta_button_1_label || "Listen Now"
                 )}
               </Button>
-              {error && <p className="text-danger mt-3">{error}</p>}
 
-              <Button variant="outline-light"
-              style={{
-                borderColor: "#2B8CEE",
-                color: "#2B8CEE",
-                fontWeight: "600",
-                padding: "0.75rem 1.5rem",
-                borderRadius: "8px",
-              }}
-              >Apply to Be a Guest</Button>
+              <Button
+                variant="outline-light"
+                style={{
+                  borderColor: "#2B8CEE",
+                  color: "#2B8CEE",
+                  fontWeight: "600",
+                  padding: "0.75rem 1.5rem",
+                  borderRadius: "8px",
+                }}
+                onClick={() =>
+                  window.open(homeData.cta_button_2_link, "_blank")
+                }
+              >
+                {homeData.cta_button_2_label || "Explore Episodes"}
+              </Button>
             </div>
           </Container>
         </section>
 
-        {/* Podcasts displayed after click */}
+        {/* 🎧 Podcasts Section */}
         {showPodcasts && (
           <section className="py-5" style={{ backgroundColor: "#F8FAFC" }}>
             <Container>
-              <h2 className="text-center mb-5 fw-bold" style={{ color: "#1E293B" }}>Latest Podcasts</h2>
+              <h2
+                className="text-center mb-5 fw-bold"
+                style={{ color: "#1E293B" }}
+              >
+                Latest Podcasts
+              </h2>
               <Row className="gy-4">
                 {Array.isArray(podcasts) && podcasts.length > 0 ? (
                   podcasts.map((podcast) => (
                     <Col key={podcast._id || podcast.title} md={6}>
-                    <Card className="h-100 shadow-sm border-0"
-                    style={{
-                      borderRadius: "12px",
-                      overflow: "hidden",
-                      backgroundColor: "#FFFFFF",
-                    }}
-                    >
-                      <Card.Body className="d-flex flex-column justify-content-between">
-                        <div>
-                          <Card.Title className="fw-bold mb-4" style={{ color: "#1E293B" }}>{podcast.title}</Card.Title>
-                          <Card.Text style={{ color: "#475569", fontSize: "0.95rem", marginBottom: "1rem" }}>{podcast.description}</Card.Text>
-                        </div>
-                        <div className="text-center mt-auto">
-                        <audio controls style={{ width: "100%", borderRadius: "8px", backgroundColor: "#E2E8F0", }}>
-                          <source src={podcast.audioUrl} type="audio/mpeg"/>
-                          Your browser does not support the audio element.
-                        </audio>
-                        </div>
-                      </Card.Body>
-                    </Card>
+                      <Card
+                        className="h-100 shadow-sm border-0"
+                        style={{
+                          borderRadius: "12px",
+                          overflow: "hidden",
+                          backgroundColor: "#FFFFFF",
+                        }}
+                      >
+                        <Card.Body className="d-flex flex-column justify-content-between">
+                          <div>
+                            <Card.Title
+                              className="fw-bold mb-4"
+                              style={{ color: "#1E293B" }}
+                            >
+                              {podcast.title}
+                            </Card.Title>
+                            <Card.Text
+                              style={{
+                                color: "#475569",
+                                fontSize: "0.95rem",
+                                marginBottom: "1rem",
+                              }}
+                            >
+                              {podcast.description}
+                            </Card.Text>
+                          </div>
+                          <div className="text-center mt-auto">
+                            <audio
+                              controls
+                              style={{
+                                width: "100%",
+                                borderRadius: "8px",
+                                backgroundColor: "#E2E8F0",
+                              }}
+                            >
+                              <source
+                                src={podcast.audioUrl}
+                                type="audio/mpeg"
+                              />
+                              Your browser does not support the audio element.
+                            </audio>
+                          </div>
+                        </Card.Body>
+                      </Card>
                     </Col>
                   ))
                 ) : (
-                  <p className="text-center text-muted">No podcasts available at the moment.</p>
+                  <p className="text-center text-muted">
+                    No podcasts available at the moment.
+                  </p>
                 )}
               </Row>
             </Container>
           </section>
         )}
 
-        {/* Featured Episode */}
+        {/* 🌟 Featured Episode */}
         <section className="py-2" style={{ backgroundColor: "#F8F9FA" }}>
           <Container>
             <Row className="justify-content-center text-center mb-4">
               <Col md={8}>
-                <h2 className="fw-bold mb-3"
-                style={{ 
-                  borderBottom: "3px solid #FFDD33",
-                  display: "inline-block",
-                  paddingBottom: "5px",
-                }}
-                >Featured Episode</h2>
-                <p className="text-muted mb-4">Listen to our latest conversation on leadership and identity.</p>
+                <h2
+                  className="fw-bold mb-3"
+                  style={{
+                    borderBottom: "3px solid #FFDD33",
+                    display: "inline-block",
+                    paddingBottom: "5px",
+                  }}
+                >
+                  Featured Episode
+                </h2>
+                <p className="text-muted mb-4">
+                  {homeData.featured_description ||
+                    "Listen to our latest conversation on leadership and identity."}
+                </p>
 
                 <div className="ratio ratio-16x9">
                   <iframe
-                    src="https://open.spotify.com/embed/episode/your-episode-id"
+                    src={
+                      homeData.featured_embed_link ||
+                      "https://open.spotify.com/embed/episode/your-episode-id"
+                    }
                     title="Featured Episode"
                     allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                   ></iframe>
@@ -149,7 +238,7 @@ function Home() {
           </Container>
         </section>
 
-        {/* Host Section */}
+        {/* 👤 Host Section */}
         <section className="py-3 text-center">
           <Container fluid="md">
             <Row className="align-items-center justify-content-center">
@@ -163,153 +252,30 @@ function Home() {
                   }}
                 >
                   <img
-                    src={profileImage}
-                    alt="Sanjay Divakar"
+                    src={homeData.host_image}
+                    alt={homeData.host_name || "Host"}
                     className="rounded-circle w-100 h-100 shadow mb-3"
-                    style={{ objectFit: "cover", objectPosition: "center", border: "3px solid #27BD73" }}
+                    style={{
+                      objectFit: "cover",
+                      objectPosition: "center",
+                      border: "3px solid #27BD73",
+                    }}
                   />
                 </div>
               </Col>
               <Col md={6}>
                 <h3 className="fw-bold mb-3">
-                  Hosted by {" "} <span style={{ color: "#2B8CEE"}}>Sanjay Divakar</span>
+                  Hosted by{" "}
+                  <span style={{ color: "#2B8CEE" }}>
+                    {homeData.host_name || "Sanjay Divakar"}
+                  </span>
                 </h3>
-                <p className="lead">
-                  Leadership coach and founder of{" "}
-                  <a
-                    href="https://rolecolorfinder.com"
-                    target="_blank"
-                    rel="noreferrer"
-                    style={{ color: "#2B8CEE", fontWeight: "500"}}
-                  >
-                    RoleColorFinder
-                  </a>
-                  . Sanjay brings deep insights on personality, culture, and
-                  leadership identity.
-                </p>
+                <p
+                  className="lead"
+                  dangerouslySetInnerHTML={{ __html: homeData.host_bio }}
+                />
               </Col>
             </Row>
-          </Container>
-        </section>
-
-        {/* Guest Carousel */}
-        <section className="py-4 text-center" style={{ backgroundColor: "#F8F9FA" }}>
-          <Container fluid>
-            <h2 className="fw-bold mb-4"
-            style={{
-              color: "#242E42",
-              borderBottom: "3px solid #FFDD33",
-              display: "inline-block",
-              paddingBottom: "5px",
-            }}
-            >Featured Guests</h2>
-            <Carousel indicators={false} interval={3000}>
-              <Carousel.Item>
-                <Row className="justify-content-center align-items-center g-4">
-                  <Col md={2}>
-                    <img
-                      src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=800&q=80"
-                      alt="Pedro Noguera"
-                      className="rounded-circle img-fluid shadow-sm"
-                      style={{
-                        width: "150px",
-                        height: "150px",
-                        objectFit: "cover",
-                        objectPosition: "center",
-                        border: "3px solid #FFDD33",
-                        margin: "0 auto",
-                      }}
-                    />
-                    <h2 className="mt-2 text-muted lead">Pedro Noguera</h2>
-                  </Col>
-                  <Col md={2}>
-                    <img
-                      src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=800&q=80"
-                      alt="Kapono Ciotti"
-                      className="rounded-circle img-fluid"
-                      style={{
-                        width: "150px",
-                        height: "150px",
-                        objectFit: "cover",
-                        objectPosition: "center",
-                        border: "3px solid #FFDD33",
-                        margin: "0 auto",
-                      }}
-                    />
-                    <h2 className="text-muted lead mt-2">Kapono Ciotti</h2>
-                  </Col>
-                  <Col md={2}>
-                    <img
-                      src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=800&q=80"
-                      alt="Guest 3"
-                      className="rounded-circle img-fluid"
-                      style={{
-                        width: "150px",
-                        height: "150px",
-                        objectFit: "cover",
-                        objectPosition: "center",
-                        border: "3px solid #FFDD33",
-                        margin: "0 auto",
-                      }}
-                    />
-                    <h2 className="text-muted lead mt-2">Emily Ciotti</h2>
-                  </Col>
-                </Row>
-              </Carousel.Item>
-
-              <Carousel.Item>
-                <Row className="justify-content-center align-items-center g-4">
-                  <Col md={2}>
-                    <img
-                      src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=800&q=80"
-                      alt="Guest 4"
-                      className="rounded-circle img-fluid shadow-sm"
-                      style={{
-                        width: "150px",
-                        height: "150px",
-                        objectFit: "cover",
-                        objectPosition: "center",
-                        border: "3px solid #FFDD33",
-                        margin: "0 auto",
-                      }}
-                    />
-                    <h2 className="text-muted lead mt-2">Lydia Willly</h2>
-                  </Col>
-                  <Col md={2}>
-                    <img
-                      src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=800&q=80"
-                      alt="Guest 5"
-                      className="rounded-circle img-fluid shadow-sm"
-                      style={{
-                        width: "150px",
-                        height: "150px",
-                        objectFit: "cover",
-                        objectPosition: "center",
-                        border: "3px solid #FFDD33",
-                        margin: "0 auto",
-                      }}
-                    />
-                    <h2 className="text-muted lead mt-2">Dolly Williams</h2>
-                  </Col>
-                  <Col md={2}>
-                    <img
-                      src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=800&q=80"
-                      alt="Guest 6"
-                      className="rounded-circle img-fluid shadow-sm"
-                      style={{
-                        width: "150px",
-                        height: "150px",
-                        objectFit: "cover",
-                        objectPosition: "center",
-                        border: "3px solid #FFDD33",
-                        margin: "0 auto", 
-                      }}
-                    />
-                    <h2 className="text-muted lead mt-2">Rachel Zipporah</h2>
-                  </Col>
-                </Row>
-              </Carousel.Item>
-            </Carousel>
           </Container>
         </section>
       </>
@@ -317,4 +283,4 @@ function Home() {
   );
 }
 
-export default Home; 
+export default Home;
