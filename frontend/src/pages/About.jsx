@@ -6,7 +6,6 @@ export default function About() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Fetch page by slug (more reliable than numeric ID)
     fetch("https://sol.rolecolorfinder.com/wp-json/wp/v2/pages?slug=about")
       .then((res) => res.json())
       .then((data) => {

@@ -47,11 +47,11 @@ function NavigationBar() {
             <Nav.Link href="/" className="nav-link-custom">
               Home
             </Nav.Link>
-            <Nav.Link href="/episodes" className="nav-link-custom">
-              Episodes
-            </Nav.Link>
             <Nav.Link href="/about" className="nav-link-custom">
               About
+            </Nav.Link>
+            <Nav.Link href="/episodes" className="nav-link-custom">
+              Episodes
             </Nav.Link>
             <Nav.Link href="/guests" className="nav-link-custom">
               Guests
