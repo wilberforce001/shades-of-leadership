@@ -10,6 +10,7 @@ import Resources from './pages/Resources';
 import Contact from './pages/Contact';
 import './App.css'
 import WordpressTest from './components/WordpressTest.jsx';
+import Blog from './pages/Blog.jsx';
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
         <Route path="/apply" element={<GuestApplication />} />
         <Route path='/resources' element={<Resources />}/>
         <Route path='/contact' element={<Contact />}/>
+        <Route path='/blog' element={<Blog />}/>
       </Routes>
       <Footer />
     </Router>

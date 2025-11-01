@@ -1,5 +1,6 @@
 import { Navbar, Nav, Container } from "react-bootstrap";
 import logo from "../assets/logo.jpg";
+import { Link } from "react-router-dom";
 
 function NavigationBar() {
   return (
@@ -64,6 +65,9 @@ function NavigationBar() {
             </Nav.Link>
             <Nav.Link href="/contact" className="nav-link-custom">
               Contact
+            </Nav.Link>
+            <Nav.Link href="/blog" className="nav-link-custom">
+              Blog
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
