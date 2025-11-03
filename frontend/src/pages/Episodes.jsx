@@ -175,15 +175,10 @@ function Episodes() {
         className="text-center text-muted mb-5"
         dangerouslySetInnerHTML={{ __html: pageData?.acf?.episodes_description }}
       />
-
-      <Row>
+      <Row className="justify-content-center">
         {episodes.map((ep) => (
-          <Col md={4} key={ep.id} className="mb-4">
-            <Card
-              className="shadow-sm h-100"
-              onClick={() => handleEpisodeClick(ep.id)}
-              style={{ cursor: "pointer" }}
-            >
+          <Col md={4} sm={6} xs={10} key={ep.id} className="mb-4 d-flex justify-content-center">
+            <Card className="shadow-sm h-100 border-0">
               {ep.acf?.episode_image && (
                 <Card.Img
                   variant="top"
@@ -195,8 +190,19 @@ function Episodes() {
                 <Card.Title dangerouslySetInnerHTML={{ __html: ep.title.rendered }} />
                 <Card.Subtitle className="text-muted mb-2">
                   {ep.acf?.guest_name}
+                  {ep.acf?.guest_title ? `, ${ep.acf.guest_title}` : ""}
                 </Card.Subtitle>
                 <Card.Text>{ep.acf?.teaser}</Card.Text>
+
+                {/*Add this button*/}
+                <div className="text-center mt-3">
+                  <Button
+                    variant="outline-primary"
+                    onClick={() => handleEpisodeClick(ep.id)}
+                  >
+                    View Details →
+                  </Button>
+                </div>
               </Card.Body>
             </Card>
           </Col>
