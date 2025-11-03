@@ -7,16 +7,19 @@ function Episodes() {
   const [episodes, setEpisodes] = useState([]);
   const [selectedEpisode, setSelectedEpisode] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [detailLoading, setDetailLoading] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Page header (page slug 'episodes')
-        const pageRes = await axios.get("https://sol.rolecolorfinder.com/wp-json/wp/v2/pages?slug=episodes");
+        const pageRes = await axios.get(
+          "https://sol.rolecolorfinder.com/wp-json/wp/v2/pages?slug=episodes"
+        );
         setPageData(pageRes.data[0]);
 
-        // All episodes
-        const epRes = await axios.get("https://sol.rolecolorfinder.com/wp-json/wp/v2/episode?per_page=100&orderby=date&order=desc");
+        const epRes = await axios.get(
+          "https://sol.rolecolorfinder.com/wp-json/wp/v2/episode?per_page=100&orderby=date&order=desc"
+        );
         setEpisodes(epRes.data);
       } catch (error) {
         console.error("Error fetching episodes:", error);
@@ -24,9 +27,23 @@ function Episodes() {
         setLoading(false);
       }
     };
-
     fetchData();
   }, []);
+
+  // Fetch full single episode details
+  const handleEpisodeClick = async (epId) => {
+    try {
+      setDetailLoading(true);
+      const res = await axios.get(
+        `https://sol.rolecolorfinder.com/wp-json/wp/v2/episode/${epId}`
+      );
+      setSelectedEpisode(res.data);
+    } catch (err) {
+      console.error("Error loading episode details:", err);
+    } finally {
+      setDetailLoading(false);
+    }
+  };
 
   if (loading) {
     return (
@@ -37,25 +54,28 @@ function Episodes() {
     );
   }
 
-  // If user clicked an episode, show detail view
+  if (detailLoading) {
+    return (
+      <div className="text-center py-5">
+        <Spinner animation="border" />
+        <p>Loading Episode Details...</p>
+      </div>
+    );
+  }
+
+  // --- EPISODE DETAIL VIEW ---
   if (selectedEpisode) {
     const acf = selectedEpisode.acf || {};
-
-    // Build themes array from non-repeater fields
     const themes = [acf.theme_1, acf.theme_2, acf.theme_3].filter(Boolean);
-
-    // Build resources array
     const resources = [
       { name: acf.resource_1_name, link: acf.resource_1_link },
       { name: acf.resource_2_name, link: acf.resource_2_link },
-      { name: acf.resource_3_name, link: acf.resource_3_link }
+      { name: acf.resource_3_name, link: acf.resource_3_link },
     ].filter(r => r.name || r.link);
-
-    // Build listen links array
     const listenLinks = [
       { name: acf.listen_1_name, url: acf.listen_1_url },
       { name: acf.listen_2_name, url: acf.listen_2_url },
-      { name: acf.listen_3_name, url: acf.listen_3_url }
+      { name: acf.listen_3_name, url: acf.listen_3_url },
     ].filter(l => l.name || l.url);
 
     return (
@@ -67,7 +87,7 @@ function Episodes() {
         <h2 className="fw-bold mb-3" dangerouslySetInnerHTML={{ __html: selectedEpisode.title.rendered }} />
 
         <p className="text-muted mb-4">
-          {acf.guest_name}{acf.guest_title ? `, ${acf.guest_title}` : ''}
+          {acf.guest_name}{acf.guest_title ? `, ${acf.guest_title}` : ""}
         </p>
 
         {acf.episode_image && (
@@ -79,7 +99,9 @@ function Episodes() {
           />
         )}
 
-        <div dangerouslySetInnerHTML={{ __html: acf.episode_intro }} className="mb-4" />
+        {acf.episode_intro && (
+          <div dangerouslySetInnerHTML={{ __html: acf.episode_intro }} className="mb-4" />
+        )}
 
         {themes.length > 0 && (
           <>
@@ -91,7 +113,9 @@ function Episodes() {
         )}
 
         {acf.pull_quote && (
-          <blockquote className="fs-5 fst-italic text-secondary">“{acf.pull_quote}”</blockquote>
+          <blockquote className="fs-5 fst-italic text-secondary">
+            {acf.pull_quote} — {acf.guest_name}
+          </blockquote>
         )}
 
         {acf.about_guest && (
@@ -107,7 +131,13 @@ function Episodes() {
             <ul>
               {resources.map((r, i) => (
                 <li key={i}>
-                  {r.link ? <a href={r.link} target="_blank" rel="noreferrer">{r.name || r.link}</a> : (r.name || r.link)}
+                  {r.link ? (
+                    <a href={r.link} target="_blank" rel="noreferrer">
+                      {r.name || r.link}
+                    </a>
+                  ) : (
+                    r.name || r.link
+                  )}
                 </li>
               ))}
             </ul>
@@ -118,11 +148,16 @@ function Episodes() {
           <div className="mt-4">
             <h5>Listen & Share</h5>
             {listenLinks.map((l, i) => (
-              l.url ? (
-                <Button key={i} variant="outline-primary" className="me-2 mb-2" href={l.url} target="_blank" rel="noreferrer">
-                  {l.name || l.url}
-                </Button>
-              ) : null
+              <Button
+                key={i}
+                variant="outline-primary"
+                className="me-2 mb-2"
+                href={l.url}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {l.name || l.url}
+              </Button>
             ))}
           </div>
         )}
@@ -130,20 +165,23 @@ function Episodes() {
     );
   }
 
-  // Default Index View
+  // --- EPISODE INDEX VIEW ---
   return (
     <Container className="py-5">
       <h2 className="fw-bold text-center mb-3">
-        {pageData?.acf?.episodes_heading}
+        {pageData?.acf?.episodes_heading || "All Episodes"}
       </h2>
-      <div className="text-center text-muted mb-5" dangerouslySetInnerHTML={{ __html: pageData?.acf?.episodes_description }} />
+      <div
+        className="text-center text-muted mb-5"
+        dangerouslySetInnerHTML={{ __html: pageData?.acf?.episodes_description }}
+      />
 
       <Row>
         {episodes.map((ep) => (
           <Col md={4} key={ep.id} className="mb-4">
             <Card
               className="shadow-sm h-100"
-              onClick={() => setSelectedEpisode(ep)}
+              onClick={() => handleEpisodeClick(ep.id)}
               style={{ cursor: "pointer" }}
             >
               {ep.acf?.episode_image && (
